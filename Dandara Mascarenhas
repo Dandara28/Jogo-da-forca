@@ -1,0 +1,49 @@
+import os
+os.system('cls')
+desafiante = input("Digite o nome do desafiante: ")
+competidor = input("Digite o nome do competidor: ")
+os.system("cls")
+
+palavraChave =input('Palavra chave: ')
+secreta = len(palavraChave) * "*"
+dica1=input('Dica 1: ')
+dica2=input('Dica 2: ')
+dica3=input('Dica 3: ')
+dicas=[dica1, dica2, dica3]
+dicaIndex=0
+errosCont=0
+while True:
+    os.system('cls')
+    print(secreta)
+    opcao = input("(1) Jogar (2) Pedir dica (3) Acabar o jogo ")
+    if opcao == "1":
+        palpite= input('Informe a letra: ')
+        secreta = list (secreta)
+        posicao=0
+        errou=True
+        for letra in palavraChave:
+            if letra == palpite: 
+                errou=False
+                secreta[posicao] = letra
+            posicao=posicao +1
+        secreta=''.join(secreta)
+        if errou:
+            errosCont+=1
+            if errosCont == 6:
+                print('Voce perdeu')
+                break
+    elif opcao == "2":
+        
+        if dicaIndex <= 2:
+            print(dicas[dicaIndex])
+            dicaIndex=dicaIndex + 1 
+        else:
+            print('Voce não tem mais dicas')
+        
+    elif opcao == "3":
+        break
+    else:
+        print("Opção inválida!")
+
+
+    input()
